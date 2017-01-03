@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Creates simlink to Sublime Text Installed Packages files
+if [ -e "$HOME/Library/Application Support/Sublime Text 3/Installed Packages" ]; then
+	rm -rf "$HOME/Library/Application Support/Sublime Text 3/Installed Packages";
+fi;
+
+ln -s "$HOME/dotfiles/SublimeText/Installed Packages" "$HOME/Library/Application Support/Sublime Text 3/Installed Packages";
+
+# Creates simlink to Sublime Text User preferences
+if [ -e "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings" ]; then
+	rm -rf "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";
+fi;
+
+ln -s "$HOME/dotfiles/SublimeText/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings";

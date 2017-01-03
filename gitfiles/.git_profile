@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Creates simlink to .gitconfig
+if [ -e "$HOME/.gitconfig" ]; then
+	rm -rf "$HOME/.gitconfig";
+fi;
+
+ln -s "$HOME/dotfiles/gitfiles/.gitconfig" "$HOME/.gitconfig";
