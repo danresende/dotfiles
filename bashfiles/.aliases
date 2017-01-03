@@ -43,9 +43,9 @@ alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Install Homebrew and Python 2.7
-homebrew='$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'
-requirements="$HOME/bin/requirements.txt"
-alias newdevtools="sudo xcode-select --install; /usr/bin/ruby -e $homebrew; export PATH=/usr/local/bin:/usr/local/sbin:$PATH; brew install python; pip install -r $requirements"
+brewurl='"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+requirements="$HOME/dotfiles/Python/requirements.txt"
+alias newdevtools="sudo xcode-select --install; /usr/bin/ruby -e $brewurl; export PATH=/usr/local/bin:/usr/local/sbin:$PATH; brew install python; brew link --overwrite python; pip install -r $requirements"
 
 # Get macOS Software Updates, pip and modules
-alias update="sudo pip install --upgrade pip; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U; softwareupdate -i -a"
+alias updatedevtools="sudo pip install --upgrade pip; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U; brew update; brew upgrade; softwareupdate -i -a"
