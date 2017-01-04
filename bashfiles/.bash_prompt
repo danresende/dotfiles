@@ -9,6 +9,16 @@
 # Color ref: http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
 # More tips: http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
 
+# Determine active Python virtualenv details.
+function set_virtualenv () {
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="$1Working on `basename \"$VIRTUAL_ENV\"`"
+      printf "\n%s" "$PYTHON_VIRTUALENV"
+  fi
+}
+
 prompt_git() {
     local s=""
     local branchName=""
@@ -126,7 +136,8 @@ set_prompts() {
     # set the terminal title to the current working directory
     PS1="\[\033]0;\w\007\]"
 
-    PS1+="\n" # newline
+    PS1+="\$(set_virtualenv \"$yellow\")"
+    PS1+="$reset\n" # newline
     PS1+="\[$userStyle\]\u" # username
     PS1+="\[$reset$white\] @ "
     PS1+="\[$hostStyle\]\h" # host
@@ -139,5 +150,4 @@ set_prompts() {
     export PS1
 }
 
-set_prompts
-unset set_prompts
+PROMPT_COMMAND=set_prompts
