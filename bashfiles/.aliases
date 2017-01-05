@@ -4,8 +4,9 @@
 alias ..="cd .."
 
 # Shortcuts
-alias desk="cd ~/Desktop"
-alias downloads="cd ~/Downloads"
+alias desk="cd $HOME/Desktop"
+alias downloads="cd $HOME/Downloads"
+alias dotfiles="cd $HOME/dotfiles"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
