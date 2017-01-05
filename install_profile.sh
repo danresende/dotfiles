@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
-# Puts the files in the HOME dir
 ABSOLUTE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Remove old folder if it exists
+if [ -e "$HOME/dotfiles" ]; then
+	rm -rf "$HOME/dotfiles";
+fi;
+
+# Puts the files in the HOME dir
 mv $ABSOLUTE_PATH $HOME
 
 # Creates simlinks
